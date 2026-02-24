@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #222;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+}
+
+section {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.produit {
+    border-bottom: 1px solid #eee;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.produit button {
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+}
+
+#panier-liste li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-supprimer {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    border-radius: 3px;
+}

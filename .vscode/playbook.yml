@@ -1,0 +1,58 @@
+---
+- name: Déploiement mini boutique en local
+  hosts: local
+  become: true
+
+  vars:
+    web_root: /var/www/mini-boutique
+
+  tasks:
+    - name: Installer Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Créer le répertoire de l’application
+      file:
+        path: "{{ web_root }}"
+        state: directory
+
+    - name: Copier les fichiers
+      copy:
+        src: "{{ item }}"
+        dest: "{{ web_root }}/"
+      loop:
+        - index.html
+        - style.css
+        - app.js
+
+    - name: Configurer Nginx
+      copy:
+        dest: /etc/nginx/sites-available/mini-boutique
+        content: |
+          server {
+              listen 80;
+              root {{ web_root }};
+              index index.html;
+          }
+      notify: Reload nginx
+
+    - name: Activer le site
+      file:
+        src: /etc/nginx/sites-available/mini-boutique
+        dest: /etc/nginx/sites-enabled/mini-boutique
+        state: link
+        force: yes
+
+    - name: Désactiver le site par défaut
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify: Reload nginx
+
+  handlers:
+    - name: Reload nginx
+      service:
+        name: nginx
+        state: restarted
