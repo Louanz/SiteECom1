@@ -8,7 +8,7 @@
 Ce projet est une application d’e‑commerce permettant à un utilisateur de consulter des produits, gérer un panier, passer une commande, appliquer un code promotionnel et effectuer un paiement.  
 Il inclut également une partie administrateur pour gérer les produits, catégories, promotions, normes et commandes.
 
-Le projet s’appuie sur :VOIR LE PDF
+Le projet s’appuie sur :**VOIR LE PDF**
  
 - un **MCD / MLD** complet  
 - un **script SQL** de création de base  
